@@ -112,7 +112,7 @@ BOARD_HAS_3DV_SUPPORT := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_TI := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nvidia/qc750/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/wexler/qc750/bluetooth
 
 # Use Cortex A9 optimizations for A7
 USE_ALL_OPTIMIZED_STRING_FUNCS := true
