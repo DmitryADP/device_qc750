@@ -1,0 +1,5 @@
+<resources>
+	 <!-- Name of the default media route when HDMI is connected. [CHAR LIMIT=50] -->
+    <add-resource type="string" name="default_media_route_name_hdmi" />
+    <string name="default_media_route_name_hdmi">HDMI</string>
+	</resources>

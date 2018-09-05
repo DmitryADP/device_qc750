@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "lights"
+#define LOGE ALOGE
 
 #include <cutils/log.h>
 
@@ -45,7 +46,7 @@ static int write_int(char const *path, int value)
 		return amt == -1 ? -errno : 0;
 	} else {
 		if (already_warned == -1) {
-			ALOGE("write_int failed to open %s\n", path);
+			LOGE("write_int failed to open %s\n", path);
 			already_warned = 1;
 		}
 		return -errno;
@@ -65,7 +66,31 @@ static int set_light_backlight(struct light_device_t *dev,
 {
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
-
+	//+++ power save
+	int range_num = 1;
+	int old_brightness_range_indexs[] = {160,255};
+	int new_brightness_range_indexs[] = {160,182};
+	int old_brightness = brightness;
+	int i=0;
+	int old_brightness_in_range = -1;// 0:1~10 , 1:10~102 , 2:102~255
+	for(i=0;i<range_num;i++){
+		int t_range_min = old_brightness_range_indexs[i];
+		int t_range_max = old_brightness_range_indexs[i+1];
+		if( brightness>=t_range_min && brightness<=t_range_max){
+			old_brightness_in_range = i;
+			break;
+		}
+	}
+	if(old_brightness_in_range>=0){
+		int old_br_min = old_brightness_range_indexs[old_brightness_in_range];
+		int olb_br_max = old_brightness_range_indexs[old_brightness_in_range+1];
+		int new_br_min = new_brightness_range_indexs[old_brightness_in_range];
+		int new_br_max = new_brightness_range_indexs[old_brightness_in_range+1];
+		int new_brightness = new_br_min +
+				(new_br_max-new_br_min)*(old_brightness-old_br_min)/(olb_br_max-old_br_min);
+		brightness = new_brightness;
+	}
+	//---
 	pthread_mutex_lock(&g_lock);
 	err = write_int("/sys/class/backlight/pwm-backlight/brightness",
 			brightness);

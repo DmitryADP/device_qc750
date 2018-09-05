@@ -1,3 +1,3 @@
-include vendor/nvidia/build/detectversion.mk
 PRODUCT_MAKEFILES := \
-  $(LOCAL_DIR)/qc750.mk
+    $(LOCAL_DIR)/aosp_qc750.mk \
+    $(LOCAL_DIR)/full_qc750.mk

@@ -30,7 +30,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SHARED_LIBRARIES := liblog
 
-LOCAL_MODULE := lights.qc750
+LOCAL_MODULE := lights.kai
 
 include $(BUILD_SHARED_LIBRARY)
 

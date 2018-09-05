@@ -1,0 +1,5 @@
+type sysfs_firmware_writable, fs_type, sysfs_type;
+type sysfs_gps_writable, fs_type, sysfs_type;
+
+#Didim file used by surfaceflinger
+type sysfs_didim, sysfs_type, fs_type;
