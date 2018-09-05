@@ -115,12 +115,12 @@
 /***** Error output *******************************************/
 #define AKMERROR \
 	((g_opmode == 0) \
-	  ? (LOGE("%s:%d Error.", __FUNCTION__, __LINE__)) \
+	  ? (ALOGE("%s:%d Error.", __FUNCTION__, __LINE__)) \
 	  : (fprintf(stderr, "%s:%d Error.\n", __FUNCTION__, __LINE__)))
 
 #define AKMERROR_STR(api) \
 	((g_opmode == 0) \
-	  ? (LOGE("%s:%d %s Error (%s).", \
+	  ? (ALOGE("%s:%d %s Error (%s).", \
 	  		  __FUNCTION__, __LINE__, (api), strerror(errno))) \
 	  : (fprintf(stderr, "%s:%d %s Error (%s).\n", \
 	  		  __FUNCTION__, __LINE__, (api), strerror(errno))))

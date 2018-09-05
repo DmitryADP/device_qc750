@@ -64,7 +64,7 @@ static void* thread_main(void* args)
 static void signal_handler(int sig)
 {
 	if (sig == SIGINT) {
-		LOGE("SIGINT signal");
+		ALOGE("SIGINT signal");
 		g_stopRequest = 1;
 		g_mainQuit = AKD_TRUE;
 	}
@@ -161,7 +161,7 @@ int OptParse(
 				g_dbforFactoryTest = 1;
 				break;
 			default:
-				LOGE("%s: Invalid argument", argv[0]);
+				ALOGE("%s: Invalid argument", argv[0]);
 				return 0;
 		}
 	}
@@ -177,7 +177,7 @@ int OptParse(
 	}
 	/* Error */
 	if(*layout_patno == PAT_INVALID){
-		LOGE("No layout is specified.");
+		ALOGE("No layout is specified.");
 		return 0;
 	}
 
@@ -274,9 +274,9 @@ int main(int argc, char **argv)
 				goto THE_END_OF_MAIN_FUNCTION;
 			}
 			if (st == 0) {
-				LOGI("Suspended.");
+				ALOGI("Suspended.");
 			} else {
-				LOGI("Compass Opened.");
+				ALOGI("Compass Opened.");
 				// Read Parameters from file.
 				if (LoadParameters(&prms) == 0) {
 					SetDefaultPRMS(&prms);
@@ -297,7 +297,7 @@ int main(int argc, char **argv)
 				// Wait thread completion.
 				g_stopRequest = 1;
 				pthread_join(s_thread, NULL);
-				LOGI("Compass Closed.");
+				ALOGI("Compass Closed.");
 
 				// Write Parameters to file.
 				SaveParameters(&prms);

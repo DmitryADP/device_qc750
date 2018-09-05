@@ -25,15 +25,15 @@
  */
 void Disp_StartMessage(void)
 {
-	LOGI("AK8975/B for Android v20110331 "
+	ALOGI("AK8975/B for Android v20110331 "
 		 "(Library: v%d.%d.%d.%d) started.",
 		 AKSC_GetVersion_Major(),
 		 AKSC_GetVersion_Minor(),
 		 AKSC_GetVersion_Revision(),
 		 AKSC_GetVersion_DateCode());
-	LOGI("Debug: %s", ((ENABLE_AKMDEBUG)?("ON"):("OFF")));
-	LOGI("Debug level: %d", DBG_LEVEL);
-	LOGI("Output to: %s", ((OUTPUT_STDOUT)?("stdout"):("LOGD")));
+	ALOGI("Debug: %s", ((ENABLE_AKMDEBUG)?("ON"):("OFF")));
+	ALOGI("Debug level: %d", DBG_LEVEL);
+	ALOGI("Output to: %s", ((OUTPUT_STDOUT)?("stdout"):("LOGD")));
 }
 
 /*!
@@ -41,7 +41,7 @@ void Disp_StartMessage(void)
  */
 void Disp_EndMessage(int ret)
 {
-	LOGI("AK8975/B for Android end (%d).", ret);
+	ALOGI("AK8975/B for Android end (%d).", ret);
 }
 
 /*!

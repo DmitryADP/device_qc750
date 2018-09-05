@@ -66,7 +66,7 @@ int16 LoadParameters(AK8975PRMS * prms)
 	}
 
 	if (ret == 0) {
-		LOGE("%s: failed.", __FUNCTION__);
+		ALOGE("%s: failed.", __FUNCTION__);
 	}
 	return ret;
 }
@@ -90,12 +90,12 @@ int16 LoadInt16(FILE * fp, const char *lpKeyName, int16 * val)
 	
 	// ATTENTION! %ns should be modified according to the size of buf.
 	if (fscanf(fp, "%63s" DELIMITER "%6d", buf, &tmp) != 2) {
-		LOGE("%s: scanf error.", __FUNCTION__);
+		ALOGE("%s: scanf error.", __FUNCTION__);
 		return 0;
 	}
 	// Compare the read parameter name with given name.
 	if (strncmp(buf, lpKeyName, sizeof(buf)) != 0) {
-		LOGE("%s: strncmp (%s) error.", __FUNCTION__, lpKeyName);
+		ALOGE("%s: strncmp (%s) error.", __FUNCTION__, lpKeyName);
 		return 0;
 	}
 	*val = (int16) tmp;
@@ -172,7 +172,7 @@ int16 SaveParameters(AK8975PRMS * prms)
 	}
 
 	if (ret == 0) {
-		LOGE("%s: failed.", __FUNCTION__);
+		ALOGE("%s: failed.", __FUNCTION__);
 	}
 
 	return ret;
@@ -189,7 +189,7 @@ int16 SaveParameters(AK8975PRMS * prms)
 int16 SaveInt16(FILE * fp, const char *lpKeyName, const int16 val)
 {
 	if (fprintf(fp, "%s" DELIMITER "%d\n", lpKeyName, val) < 0) {
-		LOGE("%s: printf (%s) error.", __FUNCTION__, lpKeyName);
+		ALOGE("%s: printf (%s) error.", __FUNCTION__, lpKeyName);
 		return 0;
 	} else {
 		return 1;

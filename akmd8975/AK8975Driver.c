@@ -101,11 +101,11 @@ int16_t AKD_TxData(const BYTE address,
 	char buf[RWBUF_SIZE];
 	
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	if (numberOfBytesToWrite > (RWBUF_SIZE-2)) {
-		LOGE("%s: Tx size is too large.", __FUNCTION__);
+		ALOGE("%s: Tx size is too large.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 
@@ -153,11 +153,11 @@ int16_t AKD_RxData(const BYTE address,
 	memset(data, 0, numberOfBytesToRead);
 	
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	if (numberOfBytesToRead > (RWBUF_SIZE-1)) {
-		LOGE("%s: Rx size is too large.", __FUNCTION__);
+		ALOGE("%s: Rx size is too large.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 
@@ -195,7 +195,7 @@ int16_t AKD_GetMagneticData(BYTE data[SENSOR_DATA_SIZE])
 	memset(data, 0, SENSOR_DATA_SIZE);
 	
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	
@@ -217,7 +217,7 @@ int16_t AKD_GetMagneticData(BYTE data[SENSOR_DATA_SIZE])
 		usleep(1000);
 	}
 	if (i >= AK8975_MEASURE_TIMEOUT) {
-		LOGE("%s: DRDY timeout.", __FUNCTION__);
+		ALOGE("%s: DRDY timeout.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 #else
@@ -296,7 +296,7 @@ int AKD_GetCloseStatus(int* status)
 int16_t AKD_SetMode(const BYTE mode)
 {
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	
@@ -317,7 +317,7 @@ int16_t AKD_SetMode(const BYTE mode)
 int16_t AKD_GetDelay(int64_t delay[3])
 {
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.\n", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.\n", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	if (ioctl(s_fdDev, ECS_IOCTL_GET_DELAY, delay) < 0) {
@@ -337,7 +337,7 @@ int16_t AKD_GetLayout(int16_t* layout)
 	short tmp;
 
 	if (s_fdDev < 0) {
-		LOGE("%s: Device file is not opened.", __FUNCTION__);
+		ALOGE("%s: Device file is not opened.", __FUNCTION__);
 		return AKD_FAIL;
 	}
 	

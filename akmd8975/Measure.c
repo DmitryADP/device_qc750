@@ -819,7 +819,7 @@ void MeasureSNGLoop(AK8975PRMS* prms)
 				} else if(ret == AKRET_HFLUC_OCCURRED) {
 					AKMDEBUG(DBG_LEVEL2, "AKSC_HFlucCheck did not return 1.\n");
 				} else {
-					LOGE("MeasuringEventProcess has failed.\n");
+					ALOGE("MeasuringEventProcess has failed.\n");
 					break;
 				}
 				measuring = 0;
