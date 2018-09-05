@@ -113,6 +113,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # qc750 specific config files
 # Audio config
+# !!!Alsa-lib sources: ftp://ftp.alsa-project.org/pub/lib/
 PRODUCT_COPY_FILES += \
 	external/alsa-lib/src/conf/alsa.conf:system/usr/share/alsa/alsa.conf \
 	external/alsa-lib/src/conf/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
